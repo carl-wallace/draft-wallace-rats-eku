@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>carl-wallace/draft-wallace-rats-eku main preview</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <style type="text/css">/*<![CDATA[*/
+      body { font-family: "Helvetica Neue","Open Sans", Helvetica, Calibri,sans-serif; }
+      h1, h2, td { font-family: "Helvetica Neue", "Roboto Condensed", "Open Sans", Helvetica, Calibri, sans-serif; }
+      h1 { font-size: 20px; } h2 { font-size: 16px; }
+      table { margin: 5px 10px; border-collapse: collapse; }
+      th, td { font-weight: normal; text-align: left; padding: 2px 5px; }
+      a:link { color: #000; } a:visited { color: #00a; }
+    /*]]>*/</style>
+  </head>
+  <body>
+    <h1>Editor's drafts for main branch of <a href="https://github.com/carl-wallace/draft-wallace-rats-eku">carl-wallace/draft-wallace-rats-eku</a></h1>
+    <p>View <a href="issues.html">saved issues</a>, or the latest GitHub <a href="https://github.com/carl-wallace/draft-wallace-rats-eku/issues">issues</a> and <a href="https://github.com/carl-wallace/draft-wallace-rats-eku/pulls">pull requests</a> in the <a href="https://github.com/carl-wallace/draft-wallace-rats-eku">repo</a>.</p>
+    <table id="branch-main">
+      <tr>
+        <td><a href="./draft-wallace-rats-eku.html" class="html draft-wallace-rats-eku" title="Extended Key Usage (EKU) Values for Remote Attestation Procedures (RATS) (HTML)">EKU for RATS</a></td>
+        <td><a href="./draft-wallace-rats-eku.txt" class="txt draft-wallace-rats-eku" title="Extended Key Usage (EKU) Values for Remote Attestation Procedures (RATS) (Text)">plain text</a></td>
+        <td><a href="https://datatracker.ietf.org/doc/draft-wallace-rats-eku" class="dt draft-wallace-rats-eku" title="Datatracker for draft-wallace-rats-eku">datatracker</a></td>
+        <td><a href="https://www.ietf.org/rfcdiff?url1=draft-wallace-rats-eku&amp;url2=https://carl-wallace.github.io/draft-wallace-rats-eku/draft-wallace-rats-eku.txt" class="diff draft-wallace-rats-eku">diff with last submission</a></td>
+        <td></td>
+      </tr>
+    </table>
+    <script>
+window.onload = function() {
+  var referrer_branch = 'main';
+  // e.g., "https://github.com/user/repo/tree/main"
+  var chunks = document.referrer.split("/");
+  if (chunks[2] === 'github.com' && chunks[5] === 'tree') {
+    referrer_branch = chunks[6];
+  }
+  let branch = document.querySelector('#branch-' + referrer_branch);
+  let h = document.location.hash.substring(1);
+  if (h === 'show') {
+    document.location.hash = '#' + branch.id;
+  } else if (branch && h.startsWith('go')) {
+    let e = branch.querySelector(h.substring(2));
+    if (e && e.href) {
+      document.location = e.href;
+    }
+  }
+};
+    </script>
+  </body>
+</html>

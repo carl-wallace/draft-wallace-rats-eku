@@ -1,0 +1,274 @@
+
+
+
+
+Remote ATtestation ProcedureS                                 C. Wallace
+Internet-Draft                                                 Red Hound
+Intended status: Standards Track                              R. Housley
+Expires: 16 December 2022                                 Vigil Security
+                                                            14 June 2022
+
+
+Extended Key Usage (EKU) Values for Remote Attestation Procedures (RATS)
+                     draft-wallace-rats-eku-latest
+
+Abstract
+
+   X.509 certificates may be used for several different purposes in the
+   Remote Attestation Procedures (RATS) architecture including verifying
+   endorsements, reference values, digital letters of approval,
+   attestations, or public key certificates.  This document defines a
+   set of extended key usage values that align with these purposes to
+   facilitate enforcement of constraints on certificate usage.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-wallace-rats-eku/.
+
+   Discussion of this document takes place on the rats Working Group
+   mailing list (mailto:rats@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/rats/.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 16 December 2022.
+
+Copyright Notice
+
+   Copyright (c) 2022 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Extended Key Usage Values for RATS
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  ASN.1 Module
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   [RFC5280] defined the extended key usage extension to indicate "one
+   or more purposes for which the certified public key may be used, in
+   addition to or in place of the basic purposes indicated in the key
+   usage extension."  It included definition of several basic extended
+   key values.  Section 3.6 of [RFC7299] provides a registry for
+   extended key usage values and has been used be several specifications
+   to define additional extended key usage values.
+
+   This document defines extended key usage values that may be used when
+   verifying artifacts in the context of the RATS architecture
+   [I-D.draft-ietf-rats-architecture].  The extended key usage values
+   defined here mirror the purpose values defined in [COTS].  The
+   certificate purpose from [COTS] is not included here because the
+   basicConstraints extensions serves that purpose.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Extended Key Usage Values for RATS
+
+   [COTS] defines the extensible $tas-list-purpose mechanism to express
+   verification actions that are applicable to a give trust anchor or
+   set of trust anchors.  Seven initial values are defined: cots, corim,
+   coswid, eat, key-attestation, certificate, dloa.  An extended key
+   usage value is defined below for each of these purposes.
+
+   id-kp-cots OBJECT IDENTIFIER ::=  { id-kp TBD1 }
+   id-kp-corim OBJECT IDENTIFIER ::=  { id-kp TBD2 }
+   id-kp-coswid OBJECT IDENTIFIER ::=  { id-kp TBD3 }
+   id-kp-eat OBJECT IDENTIFIER ::=  { id-kp TBD4 }
+   id-kp-key-attestation OBJECT IDENTIFIER ::=  { id-kp TBD5 }
+   id-kp-dloa OBJECT IDENTIFIER ::=  { id-kp TBD6 }
+
+   Entities verifying one of the indicated artifacts MAY require
+   presence of an extendedKeyUsage extension with appropriate value
+   corresponding to the type of artifact being verified for the
+   certificate to be acceptable for the given verification action.
+
+4.  Security Considerations
+
+   The extended key usage values defined in this document are intended
+   to provide a lightweight means of constraining use of certificates
+   when verifying various types of artifacts associated with
+   verification of attestations as described in
+   [I-D.draft-ietf-rats-architecture].  Use of extended key usage in
+   practice has been complicated by disparate enforcement of the
+   extension.  Some implementations only enforce values presented in end
+   entity certificates, consistent with [RFC5280].  Others require EKU
+   values to be present in intermediate CA certificates.  These
+   differences can result in different adjudications for the same
+   certification path by different implementations.
+
+5.  IANA Considerations
+
+   IANA is requested to allocate seven values from the "SMI Security for
+   PKIX Extended Key Purpose" Registry [RFC7299], preferably with the
+   specific values requested:
+
+             +=========+=======================+============+
+             | Decimal | Description           | References |
+             +=========+=======================+============+
+             | 31      | id-kp-cots            | RFCTBD     |
+             +---------+-----------------------+------------+
+             | 32      | id-kp-corim           | RFCTBD     |
+             +---------+-----------------------+------------+
+             | 33      | id-kp-coswid          | RFCTBD     |
+             +---------+-----------------------+------------+
+             | 34      | id-kp-eat             | RFCTBD     |
+             +---------+-----------------------+------------+
+             | 35      | id-kp-key-attestation | RFCTBD     |
+             +---------+-----------------------+------------+
+             | 36      | id-kp-dloa            | RFCTBD     |
+             +---------+-----------------------+------------+
+
+                                 Table 1
+
+6.  ASN.1 Module
+
+   The following ASN.1 module makes use of the conventions from
+   [RFC5912].
+
+   RatsEku-2022
+   { iso(1) identified-organization(3) dod(6)
+     internet(1) security(5) mechanisms(5) pkix(7) id-mod(0)
+     id-mod-rats-eku(TBD7) }
+
+   DEFINITIONS IMPLICIT TAGS ::=
+   BEGIN
+
+   IMPORTS
+
+   id-kp
+   FROM PKIX1Explicit-2009 -- from [RFC5912]
+     { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+       mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) }
+
+   ;
+
+   -- EXPORT ALL --
+
+   id-kp-cots OBJECT IDENTIFIER ::=  { id-kp TBD1 }
+   id-kp-corim OBJECT IDENTIFIER ::=  { id-kp TBD2 }
+   id-kp-coswid OBJECT IDENTIFIER ::=  { id-kp TBD3 }
+   id-kp-eat OBJECT IDENTIFIER ::=  { id-kp TBD4 }
+   id-kp-key-attestation OBJECT IDENTIFIER ::=  { id-kp TBD5 }
+   id-kp-dloa OBJECT IDENTIFIER ::=  { id-kp TBD6 }
+
+   END
+
+7.  References
+
+7.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5280>.
+
+   [RFC5912]  Hoffman, P. and J. Schaad, "New ASN.1 Modules for the
+              Public Key Infrastructure Using X.509 (PKIX)", RFC 5912,
+              DOI 10.17487/RFC5912, June 2010,
+              <https://www.rfc-editor.org/rfc/rfc5912>.
+
+   [RFC7299]  Housley, R., "Object Identifier Registry for the PKIX
+              Working Group", RFC 7299, DOI 10.17487/RFC7299, July 2014,
+              <https://www.rfc-editor.org/rfc/rfc7299>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+7.2.  Informative References
+
+   [COTS]     Wallace, C. and R. Housley, "Concise TA Stores (CoTS)",
+              June 2022.
+
+   [I-D.draft-birkholz-rats-corim]
+              Birkholz, H., Fossati, T., Deshpande, Y., Smith, N., and
+              W. Pan, "Concise Reference Integrity Manifest", Work in
+              Progress, Internet-Draft, draft-birkholz-rats-corim-02, 26
+              January 2022, <https://datatracker.ietf.org/doc/html/
+              draft-birkholz-rats-corim-02>.
+
+   [I-D.draft-ietf-rats-architecture]
+              Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
+              W. Pan, "Remote Attestation Procedures Architecture", Work
+              in Progress, Internet-Draft, draft-ietf-rats-architecture-
+              18, 14 June 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rats-architecture-18>.
+
+   [I-D.draft-ietf-rats-eat]
+              Lundblade, L., Mandyam, G., and J. O'Donoghue, "The Entity
+              Attestation Token (EAT)", Work in Progress, Internet-
+              Draft, draft-ietf-rats-eat-13, 20 May 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
+              eat-13>.
+
+   [I-D.draft-ietf-sacm-coswid]
+              Birkholz, H., Fitzgerald-McKay, J., Schmidt, C., and D.
+              Waltermire, "Concise Software Identification Tags", Work
+              in Progress, Internet-Draft, draft-ietf-sacm-coswid-21, 7
+              March 2022, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-sacm-coswid-21>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Authors' Addresses
+
+   Carl Wallace
+   Red Hound Software
+   United States of America
+   Email: carl@redhoundsoftware.com
+
+
+   Russ Housley
+   Vigil Security, LLC
+   516 Dranesville Road
+   Herndon, VA 20170
+   United States of America
+   Email: housley@vigilsec.com
