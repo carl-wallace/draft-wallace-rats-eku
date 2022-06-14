@@ -8,11 +8,11 @@ ipr: trust200902
 submissionType: IETF
 
 docname: draft-wallace-rats-eku-latest
-area: SEC
-workgroup: RATS Working Group
+area: "Security"
+workgroup: "Remote ATtestation ProcedureS"
 keyword: Internet-Draft
 venue:
-  mail: rats@ietf.org
+  mail: "rats@ietf.org"
 
 author:
 - ins: C. Wallace
