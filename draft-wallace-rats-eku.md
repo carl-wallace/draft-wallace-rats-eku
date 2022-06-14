@@ -64,7 +64,7 @@ X.509 certificates may be used for several different purposes in the Remote Atte
 
 {{RFC5280}} defined the extended key usage extension to indicate "one or more purposes for which the certified public key may be used, in addition to or in place of the basic purposes indicated in the key usage extension." It included definition of several basic extended key values. Section 3.6 of {{RFC7299}} provides a registry for extended key usage values and has been used be several specifications to define additional extended key usage values.
 
-This document defines extended key usage values that may be used when verifying artifacts in the context of the RATS architecture [I-D.draft-ietf-rats-architecture]. The extended key usage values defined here mirror the purpose values defined in {{COTS}}.
+This document defines extended key usage values that may be used when verifying artifacts in the context of the RATS architecture [I-D.draft-ietf-rats-architecture]. The extended key usage values defined here mirror the purpose values defined in {{COTS}}. The certificate purpose from {{COTS}} is not included here because the basicConstraints extensions serves that purpose.
 
 # Conventions and Definitions
 
