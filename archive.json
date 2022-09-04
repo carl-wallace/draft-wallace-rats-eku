@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-01T01:53:41.432426+00:00",
+  "timestamp": "2022-09-04T01:57:48.264518+00:00",
   "repo": "carl-wallace/draft-wallace-rats-eku",
   "labels": [
     {
@@ -24,14 +24,14 @@
       "color": "a2eeef"
     },
     {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
-    },
-    {
       "name": "good first issue",
       "description": "Good for newcomers",
       "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
     },
     {
       "name": "invalid",
